@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <title>感想一覧</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="page-header">
+        <h1>感想一覧</h1>
+        <a th:href="@{/registration}" class="button">＋ 新しい感想を登録する</a>
+      </div>
+
+      <div th:if="${reviews.isEmpty()}" class="empty-message">
+        <p>まだ感想はありません。</p>
+      </div>
+
+      <div class="review-list">
+        <div th:each="review : ${reviews}" class="review-card">
+          <h2 th:text="${review.title}">書籍タイトル</h2>
+          <p class="meta">
+            <strong>著者:</strong>
+            <span th:text="${review.author}">著者名</span>
+          </p>
+          <hr />
+          <h3>全体の感想</h3>
+          <p th:text="${review.overallReview}">全体の感想がここに入る</p>
+
+          <div th:if="${!review.characterReviews.isEmpty()}">
+            <h3>登場人物の感想</h3>
+            <div class="character-review-list">
+              <div
+                th:each="charReview : ${review.characterReviews}"
+                class="character-review"
+              >
+                <strong>- <span th:text="${charReview.name}"></span></strong>
+                <p th:text="${charReview.review}">感想</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <a
+        th:href="@{/}"
+        class="back-link"
+        style="margin-top: 30px; text-align: center; display: block"
+        >トップページに戻る</a
+      >
+    </div>
+  </body>
+</html>

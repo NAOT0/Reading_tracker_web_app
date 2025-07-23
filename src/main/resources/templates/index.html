@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <title>読書記録管理ツール</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
+  </head>
+  <body>
+    <div class="menu-container">
+      <h1>読書記録管理ツール</h1>
+      <p>何をしますか？</p>
+
+      <div class="button-group">
+        <form th:action="@{/registration}" method="get">
+          <button type="submit">図書登録</button>
+        </form>
+        <form th:action="@{/reviews}" method="get">
+          <button type="submit">感想一覧</button>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>

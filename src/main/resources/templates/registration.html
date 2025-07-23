@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <title>書籍情報登録</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
+  </head>
+  <body>
+    <div class="container registration-page">
+      <h1>図書情報の登録</h1>
+
+      <form class="search-form" th:action="@{/execute}" method="post">
+        <input
+          type="text"
+          name="isbn"
+          required
+          placeholder="ISBNコードを入力してください"
+        />
+        <button type="submit" class="btn btn-primary">書籍を検索</button>
+      </form>
+
+      <hr />
+
+      <div th:if="${book}" class="results-container">
+        <h2>検索結果</h2>
+        <p>
+          <strong>タイトル:</strong> <span th:text="${book.title}"></span><br />
+          <strong>著者:</strong> <span th:text="${book.author}"></span>
+        </p>
+
+        <form class="review-form" th:action="@{/save-review}" method="post">
+          <input type="hidden" name="isbn" th:value="${isbn}" />
+          <input type="hidden" name="title" th:value="${book.title}" />
+          <input type="hidden" name="author" th:value="${book.author}" />
+
+          <h3>この本に関する感想</h3>
+          <textarea
+            name="overallReview"
+            rows="4"
+            placeholder="感想をここに入力..."
+            required
+          ></textarea>
+
+          <h3>登場人物に関する感想</h3>
+          <div id="character-reviews-container"></div>
+          <button
+            type="button"
+            id="add-character-review-btn"
+            class="btn btn-secondary"
+          >
+            ＋ 登場人物の感想欄を追加
+          </button>
+
+          <div class="submit-area">
+            <button type="submit" class="btn btn-primary">感想を保存</button>
+          </div>
+        </form>
+      </div>
+
+      <div th:if="${error}" class="message error">
+        <p th:text="${error}"></p>
+      </div>
+
+      <div th:if="${review_success}" class="message success">
+        <p th:text="${review_success}"></p>
+      </div>
+
+      <a th:href="@{/}" class="back-link">トップページに戻る</a>
+    </div>
+
+    <script>
+      // --- 登場人物の感想欄を追加する処理 ---
+      document
+        .getElementById("add-character-review-btn")
+        .addEventListener("click", function () {
+          const newReviewDiv = document.createElement("div");
+          // 削除時にdivを見つけるためのクラスを付与
+          newReviewDiv.className = "character-review-entry";
+
+          const nameInput = document.createElement("input");
+          nameInput.type = "text";
+          nameInput.name = "characterNames";
+          nameInput.placeholder = "登場人物の名前";
+          nameInput.required = true;
+
+          const reviewTextarea = document.createElement("textarea");
+          reviewTextarea.name = "characterReviews";
+          reviewTextarea.rows = 2;
+          reviewTextarea.placeholder = "登場人物の心情";
+          reviewTextarea.required = true;
+
+          const removeButton = document.createElement("button");
+          removeButton.type = "button";
+          removeButton.innerText = "削除";
+          // スタイルと、削除ボタンを特定するためのクラスを付与
+          removeButton.className = "btn btn-danger remove-btn";
+
+          // onclick の設定は不要
+
+          newReviewDiv.appendChild(nameInput);
+          newReviewDiv.appendChild(reviewTextarea);
+          newReviewDiv.appendChild(removeButton);
+
+          document
+            .getElementById("character-reviews-container")
+            .appendChild(newReviewDiv);
+        });
+
+      // --- 登場人物の感想欄を削除する処理 (イベントデリゲーション) ---
+      // 親要素(container)にクリックイベントを1つだけ設定
+      document
+        .getElementById("character-reviews-container")
+        .addEventListener("click", function (event) {
+          // クリックされたのが削除ボタン(.remove-btn)の場合のみ処理を実行
+          if (event.target.classList.contains("remove-btn")) {
+            // クリックされたボタンから一番近い親の .character-review-entry を探して削除
+            event.target.closest(".character-review-entry").remove();
+          }
+        });
+    </script>
+  </body>
+</html>

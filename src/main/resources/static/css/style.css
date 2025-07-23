@@ -1,0 +1,270 @@
+/* General body styles for a clean look */
+body {
+  background-color: #f0f2f5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+/* The main container card */
+.menu-container {
+  background-color: white;
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  width: 90%;
+  max-width: 500px;
+}
+
+.menu-container h1 {
+  margin-top: 0;
+  color: #333;
+  font-size: 28px;
+}
+
+.menu-container p {
+  color: #666;
+  margin-bottom: 30px;
+}
+
+/* Flex container for the buttons */
+.button-group {
+  display: flex;
+  gap: 20px; /* Space between buttons */
+  justify-content: center;
+}
+
+/* Style for the navigation buttons */
+.button-group button {
+  width: 150px;
+  padding: 15px 0;
+  font-size: 16px;
+  font-weight: bold;
+  border: 2px solid #007bff;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+/* Make the first button filled, the second outlined */
+.button-group form:nth-child(1) button {
+  background-color: #007bff;
+  color: white;
+}
+.button-group form:nth-child(2) button {
+  background-color: white;
+  color: #007bff;
+}
+
+/* Hover effects */
+.button-group form:nth-child(1) button:hover {
+  background-color: #0056b3;
+  border-color: #0056b3;
+}
+.button-group form:nth-child(2) button:hover {
+  background-color: #e9f4ff;
+}
+
+/* You can reuse .container from the previous example */
+.container {
+  background-color: white;
+  padding: 30px 40px;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  width: 90%;
+  max-width: 700px; /* Make it a bit wider for forms */
+  margin: 40px auto;
+}
+
+/* Specific adjustments for the registration page */
+.registration-page h1 {
+  margin-bottom: 30px;
+}
+
+/* Style for forms */
+.search-form,
+.review-form {
+  text-align: left;
+  margin-bottom: 20px;
+}
+.search-form {
+  display: flex;
+  gap: 10px;
+}
+.search-form input {
+  flex-grow: 1; /* Input field takes up available space */
+}
+.review-form h3 {
+  text-align: left;
+  border-bottom: 2px solid #007bff;
+  padding-bottom: 5px;
+  margin-top: 30px;
+}
+
+/* Container for search results */
+.results-container {
+  text-align: left;
+  background-color: #e9f4ff;
+  padding: 20px;
+  border-radius: 8px;
+  margin-top: 20px;
+}
+.results-container h2 {
+  margin-top: 0;
+}
+.results-container p {
+  line-height: 1.8;
+}
+
+/* Style for dynamically added character review entries */
+.character-review-entry {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+  padding: 10px;
+  background: #f8f9fa;
+  border-radius: 4px;
+}
+.character-review-entry input {
+  width: 150px;
+  flex-shrink: 0;
+}
+.character-review-entry textarea {
+  flex-grow: 1;
+}
+
+/* Area for the final submit button */
+.submit-area {
+  text-align: center;
+  margin-top: 30px;
+}
+.submit-area button {
+  width: 50%;
+  padding: 15px;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+/* Styles for success and error messages */
+.message {
+  padding: 15px;
+  margin: 20px 0;
+  border-radius: 4px;
+  font-weight: bold;
+}
+.message.error {
+  background-color: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
+}
+.message.success {
+  background-color: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+}
+
+/* Link to go back to the top page */
+.back-link {
+  display: inline-block;
+  margin-top: 20px;
+  color: #007bff;
+  text-decoration: none;
+}
+.back-link:hover {
+  text-decoration: underline;
+}
+
+/* Header for list pages */
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid #eee;
+  padding-bottom: 15px;
+  margin-bottom: 30px;
+}
+
+.page-header h1 {
+  margin: 0;
+}
+
+/* Style for links that look like buttons */
+.page-header .button {
+  background-color: #28a745;
+  color: white;
+  padding: 10px 15px;
+  text-decoration: none;
+  border-radius: 4px;
+  font-weight: bold;
+  transition: background-color 0.2s;
+}
+
+.page-header .button:hover {
+  background-color: #218838;
+}
+
+/* Message for empty lists */
+.empty-message {
+  text-align: center;
+  padding: 50px;
+  background-color: #f8f9fa;
+  color: #6c757d;
+  border-radius: 8px;
+}
+
+/* Review Card Styling */
+.review-card {
+  background-color: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 25px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  text-align: left;
+}
+
+.review-card h2 {
+  margin-top: 0;
+  margin-bottom: 5px;
+}
+
+.review-card .meta {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 15px;
+}
+
+.review-card h3 {
+  margin-top: 20px;
+  margin-bottom: 10px;
+  color: #005a9c;
+  font-size: 18px;
+}
+
+/* Character Review Styling */
+.character-review-list {
+  margin-top: 15px;
+}
+
+.character-review {
+  background-color: #f8f9fa;
+  border-left: 4px solid #007bff;
+  padding: 15px;
+  margin-bottom: 10px;
+  border-radius: 0 4px 4px 0;
+}
+
+.character-review strong {
+  font-size: 16px;
+  color: #333;
+}
+
+.character-review p {
+  margin: 5px 0 0 0;
+  color: #555;
+}
