@@ -9,7 +9,6 @@ public class CharacterReview {
         this.review = review;
     }
 
-    // Thymeleafからアクセスするためにgetterが必要
     public String getName() { return name; }
     public String getReview() { return review; }
 }

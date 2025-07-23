@@ -15,7 +15,6 @@ public class FullReview {
         this.characterReviews = characterReviews;
     }
 
-    // Thymeleafからアクセスするためにgetterが必要
     public String getTitle() { return title; }
     public String getAuthor() { return author; }
     public String getOverallReview() { return overallReview; }

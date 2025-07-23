@@ -69,12 +69,11 @@
     </div>
 
     <script>
-      // --- 登場人物の感想欄を追加する処理 ---
       document
         .getElementById("add-character-review-btn")
         .addEventListener("click", function () {
           const newReviewDiv = document.createElement("div");
-          // 削除時にdivを見つけるためのクラスを付与
+
           newReviewDiv.className = "character-review-entry";
 
           const nameInput = document.createElement("input");
@@ -92,10 +91,8 @@
           const removeButton = document.createElement("button");
           removeButton.type = "button";
           removeButton.innerText = "削除";
-          // スタイルと、削除ボタンを特定するためのクラスを付与
-          removeButton.className = "btn btn-danger remove-btn";
 
-          // onclick の設定は不要
+          removeButton.className = "btn btn-danger remove-btn";
 
           newReviewDiv.appendChild(nameInput);
           newReviewDiv.appendChild(reviewTextarea);
@@ -106,14 +103,10 @@
             .appendChild(newReviewDiv);
         });
 
-      // --- 登場人物の感想欄を削除する処理 (イベントデリゲーション) ---
-      // 親要素(container)にクリックイベントを1つだけ設定
       document
         .getElementById("character-reviews-container")
         .addEventListener("click", function (event) {
-          // クリックされたのが削除ボタン(.remove-btn)の場合のみ処理を実行
           if (event.target.classList.contains("remove-btn")) {
-            // クリックされたボタンから一番近い親の .character-review-entry を探して削除
             event.target.closest(".character-review-entry").remove();
           }
         });
